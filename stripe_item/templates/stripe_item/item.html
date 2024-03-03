@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ item.name }}{% endblock %}
+
+{% block content %}
+<h1>{{ item.name }}</h1>
+<p>{{ item.description }}</p>
+<p>{{ item.price }}</p>
+<button id="buy-button">Buy</button>
+{% endblock %}
+
+{% block script %}
+<script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript">
+    var stripe = Stripe('pk_test_51OpBM2KenD14L3A5DiIAIwDzEY4OwXjoWgmD7bl8lb32d7ihMlfz3eCRhsR4IBKsv8ROAkz2CM9FRkeb5mvvYvXN00VLHjTrQc');
+    var buyButton = document.getElementById('buy-button');
+
+    buyButton.addEventListener('click', function() {
+        fetch('{% url 'buy_item' item.id %}', {
+            method: "GET",
+        })
+            .then(response => response.json())
+            .then(session => {
+                stripe.redirectToCheckout({ sessionId: session.session_id });
+            })
+            .catch(error => console.error('There was a problem with the fetch operation:', error));
+    });
+
+</script>
+{% endblock %}

@@ -1,0 +1,22 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Local development environment
+.env
+
+# IDE или редактор
+.idea/
+.vscode/
+*.swp
+
+# Кэш и временные файлы
+.cache/
+*.log
+*.bak
+*.tmp
+
+# Виртуальное окружение
+venv/
+env/
