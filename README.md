@@ -35,7 +35,7 @@ docker exec django-stripe-web-1 python manage.py migrate
 ```
 - Создайте суперюзера :
 ```bash
-docker exec -it django-stripe-web-1 python manage.py createsuperusert
+docker exec -it django-stripe-web-1 python manage.py createsuperuser
 ```
 
   
