@@ -27,7 +27,7 @@ def buy(request, item_id):
                 line_items=[
                     {
                         'price_data': {
-                            'currency': item.get_status_display,
+                            'currency': item.currency,
                             'unit_amount': int(item.price * 100),
                             'product_data': {
                                 'name': item.name
